@@ -7,6 +7,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
 import pl.softwareland.allegro.restclient.RepositoryClientRest
 
+
 import scala.io.StdIn
 
 object ApplicationStarter extends App{
@@ -24,7 +25,7 @@ object ApplicationStarter extends App{
     }
 
 
- val something = RepositoryClientRest("MichalBorowski","test").getRepositoryData
+  val something = RepositoryClientRest("MichalBorowski","test").getRepositoryData
 
   val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)
 

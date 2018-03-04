@@ -1,28 +1,34 @@
 package pl.softwareland.allegro.restclient
 
 import akka.actor.ActorSystem
-import akka.http.scaladsl.Http
+import akka.http.scaladsl.marshalling.Marshal
+import akka.http.scaladsl.{Http, HttpsConnectionContext}
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.stream.ActorMaterializer
-import akka.util.Timeout
+import akka.util.ByteString
 
-import scala.concurrent.{Await, ExecutionContext, Future}
+import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
-import scala.concurrent.duration._
-
 class RepositoryClientRest(userName: String, repositoryName: String) {
 
 
   def getRepositoryData(implicit executionContext: ExecutionContext, system: ActorSystem) = {
 
-    implicit val materializer = ActorMaterializer()
+    val uri = "https://api.github.com/repos/MichalBorowski/test"
+    val reqEntity = Array[Byte]()
 
-    val responseFuture: Future[HttpResponse] = Http().singleRequest(HttpRequest(uri = s"https://api.github.com/repos/${userName}/${repositoryName}"))
+    val respEntity = for {
+      request <- Marshal(reqEntity).to[RequestEntity]
+      response <- Http().singleRequest(HttpRequest(method = HttpMethods.GET, uri = uri, entity = request))
+      entity <- Unmarshal(response.entity).to[ByteString]
+    } yield entity
 
-    responseFuture andThen {
-      case Success(res) => println(Unmarshal(res.entity.toStrict(3.seconds)).value)
-      case Failure(_) => sys.error("errer")
+    respEntity andThen {
+      case Success(entity) =>
+        println(s"""{"content": "${entity.utf8String}"}""")
+      case Failure(ex) =>
+        println(s"""{"error": "${ex.getMessage}"}""")
     }
   }
 }
