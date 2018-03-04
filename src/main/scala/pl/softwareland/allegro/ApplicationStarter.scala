@@ -2,30 +2,19 @@ package pl.softwareland.allegro
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model._
-import akka.http.scaladsl.server.Directives._
 import akka.stream.ActorMaterializer
-import pl.softwareland.allegro.restclient.RepositoryClientRest
-
+import pl.softwareland.allegro.service.RepositoryService
 
 import scala.io.StdIn
 
-object ApplicationStarter extends App{
+object ApplicationStarter extends App {
 
   implicit val system = ActorSystem("my-system")
   implicit val materializer = ActorMaterializer()
   // needed for the future flatMap/onComplete in the end
   implicit val executionContext = system.dispatcher
 
-  val route =
-    path("hello") {
-      get {
-        complete(HttpEntity(ContentTypes.`text/html(UTF-8)`, "<h1>Say hello to akka-http</h1>"))
-      }
-    }
-
-
-  val something = RepositoryClientRest("MichalBorowski","test").getRepositoryData
+  val route = RepositoryService.getRepositoryService
 
   val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)
 
