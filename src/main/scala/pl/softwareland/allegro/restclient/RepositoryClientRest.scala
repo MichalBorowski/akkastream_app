@@ -13,7 +13,9 @@ import scala.util.{Failure, Success}
 class RepositoryClientRest(userName: String, repositoryName: String) {
 
 
-  def getRepositoryData(implicit executionContext: ExecutionContext, system: ActorSystem):String = {
+  def getRepositoryData(implicit executionContext: ExecutionContext, system: ActorSystem):Future[ByteString] = {
+
+    implicit val materializer = ActorMaterializer()
 
     val uri = s"https://api.github.com/repos/${userName}/${repositoryName}"
     val reqEntity = Array[Byte]()
@@ -24,16 +26,16 @@ class RepositoryClientRest(userName: String, repositoryName: String) {
       entity <- Unmarshal(response.entity).to[ByteString]
     } yield entity
 
-    val response = respEntity andThen {
+    respEntity andThen {
       case Success(entity) =>
-        s"""{"content": "${entity.utf8String}"}"""
+       entity.utf8String
       case Failure(ex) =>
-        s"""{"error": "${ex.getMessage}"}"""
+        ex.getMessage
     }
-    response.map(_.decodeString("UTF-8")).value match {
-      case Some(t) => t.get
-      case None => "somefing wrong"
-    }
+//    response.map(_.decodeString("UTF-8")).value match {
+//      case Some(t) => t.get
+//      case None => "somefing wrong"
+//    }
   }
 }
 

@@ -1,4 +1,4 @@
-package pl.softwareland.allegro.model.service
+package pl.softwareland.allegro.model
 
 import java.util.Date
 

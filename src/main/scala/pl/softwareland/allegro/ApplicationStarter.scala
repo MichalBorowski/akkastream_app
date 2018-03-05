@@ -2,10 +2,17 @@ package pl.softwareland.allegro
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.marshalling.Marshal
+import akka.http.scaladsl.model.{HttpMethods, HttpRequest, RequestEntity}
 import akka.stream.ActorMaterializer
+import akka.http.scaladsl.server.Directives._
+import akka.http.scaladsl.unmarshalling.Unmarshal
+import akka.util.ByteString
+import pl.softwareland.allegro.restclient.RepositoryClientRest
 import pl.softwareland.allegro.service.RepositoryService
 
 import scala.io.StdIn
+import scala.util.{Failure, Success}
 
 object ApplicationStarter extends App {
 
@@ -14,7 +21,9 @@ object ApplicationStarter extends App {
   // needed for the future flatMap/onComplete in the end
   implicit val executionContext = system.dispatcher
 
-  val route = RepositoryService.getRepositoryService
+//  val s = RepositoryClientRest("MichalBorowski", "test").getRepositoryData
+
+ val route = RepositoryService.getRepositoryService
 
   val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)
 
