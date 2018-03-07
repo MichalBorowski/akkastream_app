@@ -32,10 +32,6 @@ class RepositoryClientRest(userName: String, repositoryName: String) {
       case Failure(ex) =>
         ex.getMessage
     }
-//    response.map(_.decodeString("UTF-8")).value match {
-//      case Some(t) => t.get
-//      case None => "somefing wrong"
-//    }
   }
 }
 

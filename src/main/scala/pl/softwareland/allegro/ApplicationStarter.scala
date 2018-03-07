@@ -21,9 +21,7 @@ object ApplicationStarter extends App {
   // needed for the future flatMap/onComplete in the end
   implicit val executionContext = system.dispatcher
 
-//  val s = RepositoryClientRest("MichalBorowski", "test").getRepositoryData
-
- val route = RepositoryService.getRepositoryService
+  val route = RepositoryService.getRepositoryService
 
   val bindingFuture = Http().bindAndHandle(route, "localhost", 8080)
 
