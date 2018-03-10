@@ -24,15 +24,6 @@ class MarshallerTest extends AsyncWordSpec with Matchers with BeforeAndAfterAll{
       .map(_ shouldBe ByteString("""{ "bar": "bar", "wiek":100, "lala":10 }"""))
   }
 
-//  "unmarsaling custom objet" in {
-//    val food = Food("bar", 100)
-//    val entity = HttpEntity("""{ "bar": "bar", "wiek":100, "lala":10 }""")
-//    Unmarshal(entity)
-//      .to[Food]
-//      .map(_ shouldBe food)
-//  }
-
-
   case class Food(bar:String, wiek:Int)
 
 }

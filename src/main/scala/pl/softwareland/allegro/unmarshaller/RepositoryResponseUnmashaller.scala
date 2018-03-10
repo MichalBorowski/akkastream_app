@@ -1,20 +1,21 @@
 package pl.softwareland.allegro.unmarshaller
 
 import akka.http.scaladsl.unmarshalling.{FromEntityUnmarshaller, PredefinedFromEntityUnmarshallers}
-import pl.softwareland.allegro.restclient.RepositoryResponse
+import pl.softwareland.allegro.model.RepositoryResponse
 
 object RepositoryResponseUnmashaller {
+
   private def parseOpt(s: String): Option[RepositoryResponse] = {
 
     util.parsing.json.JSON.parseFull(s) match {
-      case Some(map: Map[String, Any] @unchecked) =>
+      case Some(map: Map[String, Any]@unchecked) =>
         Some(RepositoryResponse(
           Option(map("full_name").asInstanceOf[String]) match {
             case Some(full) => full
             case _ => ""
           },
           Option(map("description").asInstanceOf[String]) match {
-            case Some(d) =>d
+            case Some(d) => d
             case _ => ""
           },
           Option(map("clone_url").asInstanceOf[String]) match {
@@ -34,8 +35,10 @@ object RepositoryResponseUnmashaller {
   }
 
   implicit val unm: FromEntityUnmarshaller[RepositoryResponse] = {
-    PredefinedFromEntityUnmarshallers.stringUnmarshaller.map{ s => parseOpt(s).getOrElse{
-      throw new RuntimeException(s"Unknown RepositoryResponse: $s")
-    }}
+    PredefinedFromEntityUnmarshallers.stringUnmarshaller.map { s =>
+      parseOpt(s).getOrElse {
+        throw new RuntimeException(s"Unknown RepositoryResponse: $s")
+      }
+    }
   }
 }
