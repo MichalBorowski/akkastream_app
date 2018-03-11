@@ -16,7 +16,7 @@ import scala.util.{Failure, Success}
 
 object ApplicationStarter extends App {
 
-  implicit val system = ActorSystem("my-system")
+  implicit val system = ActorSystem("allegro_system")
   implicit val materializer = ActorMaterializer()
   // needed for the future flatMap/onComplete in the end
   implicit val executionContext = system.dispatcher

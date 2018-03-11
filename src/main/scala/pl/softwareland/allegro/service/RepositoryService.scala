@@ -19,7 +19,6 @@ object RepositoryService extends Directives {
         get {
           complete {
             params match {
-              case Nil => "no parameters provided in url"
               case params if(params.size < 2) => "give more parameters than one"
               case head::tail => getClient(head, tail.head)
             }

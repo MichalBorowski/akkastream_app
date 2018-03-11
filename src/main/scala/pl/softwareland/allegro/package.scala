@@ -4,6 +4,6 @@ import com.typesafe.config.ConfigFactory
 
 package object allegro {
 
-  val config = ConfigFactory.load()
+  lazy val config = ConfigFactory.load()
 
 }
