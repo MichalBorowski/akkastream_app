@@ -5,7 +5,6 @@ import spray.json.{DefaultJsonProtocol, PrettyPrinter}
 
 object JsonSupport {
 
-
   import DefaultJsonProtocol._
 
   implicit val printer = PrettyPrinter
