@@ -14,7 +14,7 @@
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>2.11.11</version>
+            <version>${scala.version}</version>
         </dependency>
         <dependency>
             <groupId>com.typesafe.akka</groupId>
@@ -73,6 +73,11 @@
                 <directory>${project.basedir}/src/test/resouces</directory>
             </testResource>
         </testResources>
+        <resources>
+        <resource>
+            <directory>${project.basedir}/src/main/resouces</directory>
+        </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -115,7 +120,7 @@
                     <compilerPlugins>
                         <compilerPlugin>
                             <groupId>com.artima.supersafe</groupId>
-                            <artifactId>supersafe_2.11.11</artifactId>
+                            <artifactId>supersafe_${scala.version}</artifactId>
                             <version>1.1.3</version>
                         </compilerPlugin>
                     </compilerPlugins>

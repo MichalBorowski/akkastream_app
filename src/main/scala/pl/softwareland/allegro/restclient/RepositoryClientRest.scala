@@ -20,7 +20,7 @@ class RepositoryClientRest(userName: String, repositoryName: String) {
 
     implicit val materializer = ActorMaterializer()
 
-    val EXCEPTION = "exception"
+    val Exception = "exception"
 
     val api = config.getString("services.api.url")
 
@@ -42,7 +42,7 @@ class RepositoryClientRest(userName: String, repositoryName: String) {
     respEntity andThen {
       case Success(entity) => entity
       case Failure(ex) =>
-        Left(BadRequestMessage(EXCEPTION, ex.getMessage))
+        Left(BadRequestMessage(Exception, ex.getMessage))
     }
   }
 }
