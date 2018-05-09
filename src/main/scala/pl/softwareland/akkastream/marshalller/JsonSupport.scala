@@ -1,6 +1,6 @@
-package pl.softwareland.allegro.marshalller
+package pl.softwareland.akkastream.marshalller
 
-import pl.softwareland.allegro.model.{BadRequestMessage, Repository}
+import pl.softwareland.akkastream.model.{BadRequestMessage, Repository}
 import spray.json.{DefaultJsonProtocol, PrettyPrinter}
 
 object JsonSupport {

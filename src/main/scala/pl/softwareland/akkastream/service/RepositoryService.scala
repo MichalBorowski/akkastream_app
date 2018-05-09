@@ -1,11 +1,11 @@
-package pl.softwareland.allegro.service
+package pl.softwareland.akkastream.service
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.marshalling.ToResponseMarshallable
 import akka.http.scaladsl.server.Route
-import pl.softwareland.allegro.model.{BadRequestMessage, Repository}
-import pl.softwareland.allegro.restclient.RepositoryClientRest
+import pl.softwareland.akkastream.model.{BadRequestMessage, Repository}
+import pl.softwareland.akkastream.restclient.RepositoryClientRest
 
 import scala.concurrent.ExecutionContext
 
@@ -13,7 +13,7 @@ import akka.http.scaladsl.server.Directives._
 
 object RepositoryService {
 
-  import pl.softwareland.allegro.marshalller.JsonSupport._
+  import pl.softwareland.akkastream.marshalller.JsonSupport._
 
   def getRepositoryService(implicit executionContext: ExecutionContext, actor: ActorSystem): Route = {
     pathPrefix("repositories") {

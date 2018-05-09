@@ -1,10 +1,10 @@
-package pl.softwareland.allegro
+package pl.softwareland.akkastream
 
 import akka.actor.ActorSystem
 import akka.event.Logging
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
-import pl.softwareland.allegro.service.RepositoryService
+import pl.softwareland.akkastream.service.RepositoryService
 
 import scala.util.{Failure, Success}
 

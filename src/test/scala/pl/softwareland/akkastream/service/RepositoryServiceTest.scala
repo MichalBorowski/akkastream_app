@@ -1,16 +1,16 @@
-package pl.softwareland.allegro.service
+package pl.softwareland.akkastream.service
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport._
 import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.testkit.{RouteTestTimeout, ScalatestRouteTest}
 import org.scalatest.{FlatSpec, Matchers}
-import pl.softwareland.allegro.model.{BadRequestMessage, Repository}
+import pl.softwareland.akkastream.model.{BadRequestMessage, Repository}
 
 import scala.concurrent.duration._
 class RepositoryServiceTest extends FlatSpec  with Matchers with ScalatestRouteTest{
 
-   import pl.softwareland.allegro.marshalller.JsonSupport._
+   import pl.softwareland.akkastream.marshalller.JsonSupport._
 
   implicit def default(implicit system: ActorSystem) = RouteTestTimeout(5.second)
 

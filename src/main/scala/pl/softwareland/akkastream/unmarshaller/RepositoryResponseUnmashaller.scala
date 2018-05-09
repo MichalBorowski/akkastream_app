@@ -1,7 +1,7 @@
-package pl.softwareland.allegro.unmarshaller
+package pl.softwareland.akkastream.unmarshaller
 
 import akka.http.scaladsl.unmarshalling.{FromEntityUnmarshaller, PredefinedFromEntityUnmarshallers}
-import pl.softwareland.allegro.model.RepositoryResponse
+import pl.softwareland.akkastream.model.RepositoryResponse
 
 object RepositoryResponseUnmashaller {
 

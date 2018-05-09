@@ -1,4 +1,4 @@
-package pl.softwareland.allegro.model
+package pl.softwareland.akkastream.model
 
 case class RepositoryResponse(full_name:String,
                               description:String,
