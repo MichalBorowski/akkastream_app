@@ -1,2 +1,2 @@
-# allegro_app
+# akkastream
 
