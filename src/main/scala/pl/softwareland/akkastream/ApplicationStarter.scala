@@ -10,9 +10,9 @@ import scala.util.{Failure, Success}
 
 object ApplicationStarter extends App {
 
-  val AllegroSystem = "allegro_system"
+  val GitWebSystem = "git_web_system"
 
-  implicit val system = ActorSystem(AllegroSystem)
+  implicit val system = ActorSystem(GitWebSystem)
   implicit val materializer = ActorMaterializer()
 
   implicit val executionContext = system.dispatcher
@@ -25,7 +25,7 @@ object ApplicationStarter extends App {
 
   val bindingFuture = Http().bindAndHandle(route, host, port)
 
-  val log = Logging(system.eventStream, AllegroSystem)
+  val log = Logging(system.eventStream, GitWebSystem)
 
   bindingFuture.onComplete {
     case Success(server) =>
