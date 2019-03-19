@@ -1,4 +1,4 @@
-name := "allegro_app"
+name := "akkastream_app"
 
 scalaVersion := "2.11.11"
 
