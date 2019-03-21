@@ -1,4 +1,4 @@
-name := "akkastream_app"
+name := "httpakkaapp"
 
 scalaVersion := "2.11.11"
 
