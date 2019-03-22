@@ -15,8 +15,8 @@ class RepositoryServiceTest extends FlatSpec  with Matchers with ScalatestRouteT
   implicit def default(implicit system: ActorSystem) = RouteTestTimeout(5.second)
 
 
-  val repository = Repository("softwareland/test", "",
-    "https://github.com/softwareland/spark.git", 0, "2018-01-23T10:01:51Z")
+  val repository = Repository("softwareland/spark", "Apache Spark",
+    "https://github.com/softwareland/spark.git", 0, "2019-03-21T11:23:18Z")
 
 
   val badRequest = BadRequestMessage("Not Found", "The requested resource could not be found but may be available again in the future.")
@@ -28,7 +28,7 @@ class RepositoryServiceTest extends FlatSpec  with Matchers with ScalatestRouteT
     }
   }
   "Service" should "respond to bad request" in {
-    Get("/repositories/softwareland/spark") ~> RepositoryService.getRepositoryService ~> check {
+    Get("/repositories/softwareland/spar") ~> RepositoryService.getRepositoryService ~> check {
       responseAs[BadRequestMessage] shouldEqual badRequest
     }
   }
