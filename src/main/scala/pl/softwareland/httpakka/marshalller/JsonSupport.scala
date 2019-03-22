@@ -1,6 +1,7 @@
-package pl.softwareland.akkastream.marshalller
+package pl.softwareland.httpakka.marshalller
 
-import pl.softwareland.akkastream.model.{BadRequestMessage, Repository}
+import pl.softwareland.httpakka.model.Repository
+import pl.softwareland.httpakka.model.BadRequestMessage
 import spray.json.{DefaultJsonProtocol, PrettyPrinter}
 
 object JsonSupport {

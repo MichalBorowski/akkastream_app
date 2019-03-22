@@ -1,7 +1,7 @@
-package pl.softwareland.akkastream.unmarshaller
+package pl.softwareland.httpakka.unmarshaller
 
 import akka.http.scaladsl.unmarshalling.{FromEntityUnmarshaller, PredefinedFromEntityUnmarshallers}
-import pl.softwareland.akkastream.model.RepositoryResponse
+import pl.softwareland.httpakka.model.RepositoryResponse
 
 object RepositoryResponseUnmashaller {
 

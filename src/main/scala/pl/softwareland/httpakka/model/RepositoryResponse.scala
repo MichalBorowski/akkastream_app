@@ -1,4 +1,4 @@
-package pl.softwareland.akkastream.model
+package pl.softwareland.httpakka.model
 
 case class RepositoryResponse(full_name:String,
                               description:String,

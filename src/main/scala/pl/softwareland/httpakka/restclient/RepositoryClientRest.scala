@@ -1,7 +1,6 @@
-package pl.softwareland.akkastream.restclient
+package pl.softwareland.httpakka.restclient
 
-
-import pl.softwareland.akkastream._
+import pl.softwareland.httpakka._
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.marshalling.Marshal
@@ -9,7 +8,7 @@ import akka.http.scaladsl.model.StatusCodes._
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.unmarshalling.Unmarshal
 import akka.stream.ActorMaterializer
-import pl.softwareland.akkastream.model.{BadRequestMessage, RepositoryResponse}
+import pl.softwareland.httpakka.model.{BadRequestMessage, RepositoryResponse}
 
 import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success}
@@ -27,7 +26,7 @@ class RepositoryClientRest(userName: String, repositoryName: String) {
     val uri = s"${api}${userName}/${repositoryName}"
     val reqEntity = Array[Byte]()
 
-    import pl.softwareland.akkastream.unmarshaller.RepositoryResponseUnmashaller._
+    import pl.softwareland.httpakka.unmarshaller.RepositoryResponseUnmashaller._
 
     val respEntity = for {
       request <- Marshal(reqEntity).to[RequestEntity]

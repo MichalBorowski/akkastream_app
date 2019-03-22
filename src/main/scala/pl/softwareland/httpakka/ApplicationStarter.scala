@@ -1,10 +1,10 @@
-package pl.softwareland.akkastream
+package pl.softwareland.httpakka
 
 import akka.actor.ActorSystem
 import akka.event.Logging
 import akka.http.scaladsl.Http
 import akka.stream.ActorMaterializer
-import pl.softwareland.akkastream.service.RepositoryService
+import pl.softwareland.httpakka.service.RepositoryService
 
 import scala.util.{Failure, Success}
 
